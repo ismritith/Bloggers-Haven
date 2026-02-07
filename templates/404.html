@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>404</title>
+
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Ceviche+One&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+    margin: 0;
+    height: 100%;
+    background: #1a0b16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* subtle grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 45px 45px;
+    pointer-events: none;
+}
+
+.wrapper {
+    text-align: center;
+    color: #a56cb5; /* MAIN COLOR */
+}
+
+/* BIG 404 */
+.error {
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 280px;
+    transform: rotate(-12deg) skewX(-12deg);
+    text-shadow:
+        0 0 12px rgba(165,108,181,0.6),
+        0 0 30px rgba(165,108,181,0.35);
+}
+
+/* O O P S */
+.oops {
+    font-family: 'Ceviche One', cursive;
+    letter-spacing: 42px;
+    font-size: 52px;
+    margin-top: -35px;
+    text-transform: lowercase;
+}
+
+/* MESSAGE */
+.message {
+    font-family: 'Ceviche One', cursive;
+    margin-top: 26px;
+    font-size: 44px;
+    line-height: 1.1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+    <div class="error">404</div>
+    <div class="oops">oops</div>
+    <div class="message">looks like this page is lost.</div>
+</div>
+
+</body>
+</html>
