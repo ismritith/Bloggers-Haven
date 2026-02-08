@@ -3,28 +3,32 @@
 {% block content %}
 
     
+{% load static %}
+
 {% for post in featured_posts %}
-{% if forloop.first%}
-<div class="jumbotron p-3 p-md-5 text-black rounded"
-     style="
-     {% if post.featured_image %}
-         background-image: url('{{ post.featured_image.url }}');
-     {% else %}
-         background-color: #333;
-     {% endif %}
-     background-size: cover;
-     background-position: center;
-     min-height: 300px;
-     display: flex;
-     align-items: center;
-     ">
-  <div class="col-md-8 px-0">
-    <h1 class="display-4 font-italic">{{ post.title }}</h1>
-    <p class="lead my-3">{{ post.short_description | truncatewords:25 }}</p>
-  </div>
-</div>
-{% endif %}
+    {% if forloop.first %}
+        <div class="jumbotron p-3 p-md-5 text-black rounded"
+             style="
+                 min-height: 300px;
+                 display: flex;
+                 align-items: center;
+                 background-size: cover;
+                 background-position: center;
+                 {% if post.featured_image %}
+                     background-image: url('{{ post.featured_image.url }}');
+                 {% else %}
+                     background-image: url('{% static 'images/default-bg.jpg' %}');
+                 {% endif %}
+             ">
+          <div class="col-md-8 px-0">
+            <h1 class="display-4 font-italic">{{ post.title }}</h1>
+            <p class="lead my-3">{{ post.short_description | truncatewords:25 }}</p>
+            <p class="lead mb-0"><a href="{% url 'blog' post.slug %}" class="text-dark font-weight-bold">Continue reading...</a></p>
+          </div>
+        </div>
+    {% endif %}
 {% endfor %}
+
 
 
 <!-- Featured Posts Section -->
@@ -35,7 +39,7 @@
     <div class="col-md-6">
       <div class="card border-0" >
         <div class="card-body">
-          <h3>{{ post.title }}</h3>
+          <h3><a href="{% url 'blog' post.slug %}" class="text-dark">{{ post.title }}</a></h3>
           <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
           <p class="card-text">{{ post.short_description | truncatewords:25}}</p>
         </div>
@@ -53,7 +57,7 @@
         {% for post in posts %}
         <div class="card border-0" >
         <div class="card-body">
-          <h3>{{ post.title }}</h3>
+          <h3><a href="{% url 'blog' post.slug %}" class="text-dark">{{ post.title }}</a></h3>
           <small class="mb-1 text-muted">{{ post.created_at | timesince }} ago | {{ post.author }}</small>
           <p class="card-text">{{ post.short_description | truncatewords:25 }}</p>
         </div>
