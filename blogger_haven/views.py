@@ -3,6 +3,8 @@ from blogs.models import Blog, Category
 from assignments.models import About
 from django.contrib.auth import get_user_model
 from .forms import RegistrationForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth
 
 
 # def home(request):
@@ -47,3 +49,20 @@ def register(request):
         'form': form,
     }
     return render(request, 'register.html', context)
+
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('home')
+    form = AuthenticationForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'login.html', context)
