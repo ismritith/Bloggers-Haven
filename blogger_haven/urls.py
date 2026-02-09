@@ -52,7 +52,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
-    path('<slug:slug>/', BlogsView.blogs, name='blog'),
+    path('blogs/<slug:slug>/', BlogsView.blogs, name='blog'),
+
+    #search endpoint
+    path('search/', BlogsView.search, name='search'),
 ]
 
 if settings.DEBUG:
