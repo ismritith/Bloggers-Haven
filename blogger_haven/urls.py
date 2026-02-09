@@ -56,6 +56,7 @@ urlpatterns = [
 
     #search endpoint
     path('search/', BlogsView.search, name='search'),
+    path('register/', views.register, name='register'),
 ]
 
 if settings.DEBUG:
