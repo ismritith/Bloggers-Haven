@@ -24,20 +24,21 @@
     </tr>
   </thead>
   <tbody>
-    {% for category in categories %}
+    {% for cat in categories %}
     <tr>
       <td>{{ forloop.counter }}</td>
-      <td>{{ category.name }}</td>
-      <td>{{ category.created_at }}</td>
-      <td>{{ category.updated_at }}</td>
+      <td>{{ cat }}</td>
+      <td>{{ cat.created_at }}</td>
+      <td>{{ cat.updated_at }}</td>
       <td>
-        <a href=""><i class="fa fa-edit text-success"></i></a>
+        <a href="{% url 'edit_category' cat.id %}"><i class="fa fa-edit text-success"></i></a>
         &emsp;
         <a href=""><i class="fa fa-trash text-danger"></i></a>
     </td>
     </tr>
     {% endfor %}
- 
+
+
   </tbody>
 </table>
 
