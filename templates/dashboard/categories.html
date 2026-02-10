@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <!-- Leftside bar-->
+
+    <!--Load the sidebar here-->
+    {% include 'dashboard/sidebar.html' %}
+
+
+
+    <!-- Right side content-->
+     <div class="col-md-9">
+        <h3> All Categories </h3>
+        <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Category Name</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for category in categories %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ category.name }}</td>
+      <td>{{ category.created_at }}</td>
+      <td>{{ category.updated_at }}</td>
+      <td>
+        <a href=""><i class="fa fa-edit text-success"></i></a>
+        &emsp;
+        <a href=""><i class="fa fa-trash text-danger"></i></a>
+    </td>
+    </tr>
+    {% endfor %}
+ 
+  </tbody>
+</table>
+
+    </div>
+        
+</div>
+
+
+{% endblock %}
