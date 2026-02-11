@@ -1,6 +1,14 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
 
+.blog-title {
+    font-family: 'Poppins', 'Segoe UI', sans-serif; /* modern attractive font */
+    font-weight: 900; /* makes it extra bold */
+    font-size: 3rem;   /* adjusts the size like display-4 */
+    color: #222;       /* dark text */
+    line-height: 1.2;  /* nice spacing */
+}
+
 
 .blog-header {
   border-bottom: 1px solid #e5e5e5;
